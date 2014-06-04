@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^deviceservices/showSettings deviceActivation.php?action=showSettings [L]
+RewriteRule ^deviceservices/deviceActivation deviceActivation.php?action=deviceActivation [L]
+RewriteRule ^deviceservices/checkUnbrickHealth deviceActivation.php?action=checkUnbrickHealth [L]
