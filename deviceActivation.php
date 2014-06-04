@@ -27,16 +27,14 @@ case 'deviceActivation':
 header("Content-type: text/html");
 
 if(isset($_POST['activation-info-base64'])) {
-header("Cteonnt-Length: 8059");
 header("Content-Length: 8059");
-$ainfo = base64_decode($_POST['activation-info-base64']);
-$xml = new SimpleXMLElement($ainfo);
-$data = base64_decode((string)$xml->data);
+$xml = new SimpleXMLElement($_POST['activation-info']);
+$data = base64_decode($xml->data);
 $xml = new SimpleXMLElement($data);
 $ActivationRandomness = trim((string)$xml->dict->string[0]);
 $UniqueDeviceID = trim((string)$xml->dict->string[17]);
 $InternationalMobileEquipmentIdentity = trim((string)$xml->dict->string[8]);
-$DeviceCertRequest = str_replace("\n", "", trim((string)$xml->dict->data[1]));
+$DeviceCertRequest = str_replace("\n", "", trim((string)$xml->dict->data[0]));
 $str = base64_encode(sprintf("{
 	\"InternationalMobileEquipmentIdentity\" = \"%s\";
 	\"ActivityURL\" = \"https://albert.gcsis-apple.com.akadns.net/deviceservices/activity\";
