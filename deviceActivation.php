@@ -26,10 +26,10 @@ break;
 case 'deviceActivation':
 header("Content-type: text/html");
 
-if(isset($_POST['activation-info-base64'])) {
+if(isset($_POST['activation-info'])) {
 header("Cteonnt-Length: 8059");
 header("Content-Length: 8059");
-$ainfo = base64_decode($_POST['activation-info-base64']);
+$ainfo = base64_decode($_POST['activation-info']);
 $xml = new SimpleXMLElement($ainfo);
 $data = base64_decode((string)$xml->data);
 $xml = new SimpleXMLElement($data);
